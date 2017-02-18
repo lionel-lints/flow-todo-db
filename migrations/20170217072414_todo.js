@@ -3,7 +3,7 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable('todo', function(table){
     table.increments();
     table.timestamps();
-    table.integer('user_id').unsigned().references('id').inTable('user').onDelete('cascade');
+    table.integer('user_id').unsigned().references('id').inTable('users').onDelete('cascade');
     table.text('title');
     table.text('description').defaultTo('');
     table.datetime('due_at');
