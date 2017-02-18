@@ -1,13 +1,48 @@
-
-exports.seed = function(knex, Promise) {
-  // Deletes ALL existing entries
-  return knex('table_name').del()
-    .then(function () {
-      return Promise.all([
-        // Inserts seed entries
-        knex('table_name').insert({id: 1, colName: 'rowValue1'}),
-        knex('table_name').insert({id: 2, colName: 'rowValue2'}),
-        knex('table_name').insert({id: 3, colName: 'rowValue3'})
-      ]);
-    });
+module.exports.seed = function(knex, Promise) {
+  return knex.raw('ALTER SEQUENCE evaluation_id_seq restart with 6;').then(function () {
+    return Promise.join(
+      knex('evaluation').del(),
+      knex('evaluation').insert({
+        id: 1,
+        todo_id: 1,
+        energy: 4.6,
+        engagement: 3.2,
+        flow: true,
+        notes: 'interesting, low engagement from this, good flow'
+      }),
+      knex('evaluation').insert({
+        id: 2,
+        todo_id: 3,
+        energy: 4.6,
+        engagement: 3.2,
+        flow: true,
+        notes: 'interesting, low engagement from this, good flow'
+      }),
+      knex('evaluation').insert({
+        id: 3,
+        todo_id: 5,
+        energy: 4.6,
+        engagement: 3.2,
+        flow: true,
+        notes: 'interesting, low engagement from this, good flow'
+      }),
+      knex('evaluation').insert({
+        id: 4,
+        todo_id: 8,
+        energy: 4.6,
+        engagement: 3.2,
+        flow: true,
+        notes: 'interesting, low engagement from this, good flow'
+      }),
+      knex('evaluation').insert({
+        id: 5,
+        todo_id: 10,
+        energy: 4.6,
+        engagement: 3.2,
+        flow: true,
+        notes: 'interesting, low engagement from this, good flow'
+      })
+    );
+  });
 };
+
