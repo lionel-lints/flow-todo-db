@@ -1,14 +1,3 @@
-exports.up = function(knex, Promise) {
-  return knex.schema.createTable('todo', function(table){
-    table.increments();
-    table.timestamps();
-    table.integer('user_id').unsigned().references('id').inTable('todo').onDelete('cascade');
-    table.text('title');
-    table.text('description').defaultTo('');
-    table.datetime('due_at');
-    table.boolean('complete').defaultTo(false);
-  }); 
-};
 
 module.exports.seed = function(knex, Promise) {
   return knex.raw('ALTER SEQUENCE todo_id_seq restart with 9;').then(function () {
@@ -20,7 +9,7 @@ module.exports.seed = function(knex, Promise) {
         title: 'clean kitchen',
         description: 'mop the kitchen, sweep the floor.',
         due_at: new Date().now,
-        complete: false
+        complete: true
       }),
       knex('todo').insert({
         id: 2,
@@ -36,7 +25,7 @@ module.exports.seed = function(knex, Promise) {
         title: 'update resume',
         description: 'go over my skills and update them on my resume',
         due_at: new Date().now,
-        complete: false
+        complete: true
       }),
       knex('todo').insert({
         id: 4,
@@ -52,7 +41,7 @@ module.exports.seed = function(knex, Promise) {
         title: 'respond to emails',
         description: 'make sure to clear out junk mail',
         due_at: new Date().now,
-        complete: false
+        complete: true
       }),
       knex('todo').insert({
         id: 6,
@@ -76,7 +65,7 @@ module.exports.seed = function(knex, Promise) {
         title: '',
         description: 'take out the trash',
         due_at: new Date().now,
-        complete: false
+        complete: true
       }),
       knex('todo').insert({
         id: 9,
@@ -92,7 +81,7 @@ module.exports.seed = function(knex, Promise) {
         title: '',
         description: '',
         due_at: new Date().now,
-        complete: false
+        complete: true
       })
     );
   });

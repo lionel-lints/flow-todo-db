@@ -1,3 +1,4 @@
+
 module.exports.seed = function(knex, Promise) {
   return knex.raw('ALTER SEQUENCE user_id_seq restart with 5;').then(function () {
     return Promise.join(
