@@ -1,0 +1,23 @@
+{
+  "name": "flow_todos",
+  "version": "1.0.0",
+  "description": "a small todo app that tracks energy, engagement, and flow.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "energy",
+    "engagement",
+    "flow",
+    "todo",
+    "todos"
+  ],
+  "author": "lionel lints",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "knex": "^0.12.6",
+    "pg": "^6.1.2"
+  }
+}
